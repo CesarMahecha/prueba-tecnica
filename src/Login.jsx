@@ -30,18 +30,18 @@ const Login = () => {
 
   // Redirigir a la página deseada si el usuario está conectado
   if (loggedIn) {
-    navigate('/characters')
+    window.location.href = ('https://www.google.com')
   }
 
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       {/* Parte izquierda con la imagen */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        <img src="https://source.unsplash.com/random?wallpapers" alt="Imagen" style={{ maxWidth: '100%', height: '100%', width: '100%', height: '100%' }} />
+      <div style={{ flex: '65%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <img src="https://source.unsplash.com/random?wallpapers" alt="Imagen" style={{ maxWidth: '100%', maxHeight: '100%', width: '100%', height: '100%' }} />
       </div>
 
       {/* Parte derecha con el formulario */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ flex: '35%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
         <Form
           name="basic"
           labelCol={{
@@ -105,23 +105,17 @@ const Login = () => {
               span: 16,
             }}
           >
-            <ReCAPTCHA
-              ref={captchaRef}
-              sitekey={import.meta.env.VITE_APP_GOOGLE_CAPTCHA_KEY}
-            />
-          </Form.Item>
-
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
             <Button type="primary" htmlType="submit">
               Submit
             </Button>
           </Form.Item>
         </Form>
+        <div style={{ marginTop: '1rem', width: '300px', height: '100px', position: 'absolute', top: '70%', right: '7.25%'}}>
+          <ReCAPTCHA
+            ref={captchaRef}
+            sitekey={import.meta.env.VITE_APP_GOOGLE_CAPTCHA_KEY}
+          />
+        </div>
       </div>
     </div>
   );
